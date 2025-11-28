@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: example_database
+      MYSQL_USER: hamid
+      MYSQL_PASSWORD: Hamid123**A
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/example_database.sql:/docker-entrypoint-initdb.d/example_database.sql
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+
+  php:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    container_name: php
+    image: lampapp-php:latest
+    environment:
+      # Variables d'environnement pour la connexion DB
+      DB_HOST: mysql
+      DB_DATABASE: example_database
+      DB_USER: hamid
+      DB_PASSWORD: Hamid123**A
+    volumes:
+      - ./php/src:/var/www/html
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  apache:
+    build:
+      context: ./apache
+      dockerfile: Dockerfile
+    container_name: apache
+    image: lampapp-apache:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./php/src:/var/www/html
+    networks:
+      - frontend
+    depends_on:
+      - php
+
+volumes:
+  mysql_data:
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge

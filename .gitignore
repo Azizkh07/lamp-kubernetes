@@ -1,0 +1,32 @@
+# Environment variables
+.env
+.env. local
+
+# Docker
+docker-compose.override.yml
+. docker/
+
+# Kubernetes secrets
+*secret*. yaml
+secrets/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# MySQL data
+mysql-data/
+data/
+
+# Temporary files
+*.tmp
+*.bak
+tmp/
