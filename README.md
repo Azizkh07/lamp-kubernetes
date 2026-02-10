@@ -3,7 +3,7 @@
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com/)
 [![Apache](https://img.shields.io/badge/Apache-D22128?style=for-the-badge&logo=apache&logoColor=white)](https://httpd.apache.org/)
-[![MySQL](https://img.shields. io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www. mysql.com/)
+[![MySQL](https://img.shields. io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![PHP](https://img.shields.io/badge/PHP-777BB4? style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
 
 ## 📋 Description
